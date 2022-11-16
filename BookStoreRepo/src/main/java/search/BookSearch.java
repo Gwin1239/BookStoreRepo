@@ -59,17 +59,22 @@ public class BookSearch extends HttpServlet {
 	   	              "<h2 align=\"center\">" + title + "</h2>\n");
 	           while (rs.next()) {
 	        	   String bookName = rs.getString("BOOK_NAME").trim();
-	        	   String bookISBN = rs.getString("BOOK_ISBN").trim();
+	        	   String bookAuthor = rs.getString("BOOK_AUTHOR").trim();
 	        	   Double price = rs.getDouble("BOOK_PRICE");
+	        	   String bookISBN = rs.getString("BOOK_ISBN").trim();
+	        	   String bookURL = rs.getString("BOOK_URL").trim();
 	        	   
 	        	   out.println(docType + //
 	 	   	              "<ul>\n" + //
 
 	 	   	              "  <li><b>Book Name</b>: " + bookName + "\n" + //
-	 	   	              "  <li><b>ISBN</b>: " + bookISBN + "\n" + //
+	 	   	              "  <li><b>Author</b>: " + bookAuthor + "\n" + //
 	 	   	              "  <li><b>Book Price</b>: " + price + "\n" + //
-	 	   	            
+	 	   	              "  <li><b>ISBN</b>: " + bookISBN + "\n" + //
+	 	   	             
 	 	   	              "</ul>\n");   
+	        	   
+	        	   out.println("<a href=" + bookURL + ">View book!</a> <br>");
 	 	           }
 	 	           out.println("<a href=/BookStoreRepo/index.html>Back to HomePage!</a> <br>");
 	 		   	   out.println("</body></html>");
